@@ -13,37 +13,35 @@
     <Company />
     <Authors>Kinsi55</Authors>
     <Copyright>Kinsi55</Copyright>
-    <RepositoryType></RepositoryType>
-    <RepositoryUrl></RepositoryUrl>
-    <Description></Description>
+    <RepositoryType>
+    </RepositoryType>
+    <RepositoryUrl>
+    </RepositoryUrl>
+    <Description>
+    </Description>
     <Platforms>x64</Platforms>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-
   <Import Project="SuppressRefereces.targets" />
-
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
     <OutputPath>bin\Debug</OutputPath>
   </PropertyGroup>
-
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <DefineConstants></DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <DebugType>none</DebugType>
     <OutputPath>bin\</OutputPath>
   </PropertyGroup>
-
   <PropertyGroup Condition="$(DefineConstants.Contains('CIBuild')) OR '$(NCrunch)' == '1'">
     <DisableCopyToPlugins>True</DisableCopyToPlugins>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(NCrunch)' == '1'">
     <DisableCopyToPlugins>True</DisableCopyToPlugins>
     <DisableZipRelease>True</DisableZipRelease>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="UI\BSML\SongDeleteConfirm.bsml" />
     <None Remove="UI\BSML\SplitViews\Settings.bsml" />
@@ -51,7 +49,6 @@
     <None Remove="UI\FavoritesIcon.png" />
     <None Remove="UI\SongListBottomUI.bsml" />
   </ItemGroup>
-
   <ItemGroup>
     <Reference Include="0Harmony">
       <HintPath>$(BeatSaberDir)\Libs\0Harmony.dll</HintPath>
@@ -87,21 +84,32 @@
     <Reference Include="Interactable">
       <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\Interactable.dll</HintPath>
     </Reference>
-      <Reference Include="MonoMod.Utils">
-          <HintPath>$(BeatSaberDir)\Libs\MonoMod.Utils.dll</HintPath>
-      </Reference>
+    <Reference Include="MonoMod.Utils">
+      <HintPath>$(BeatSaberDir)\Libs\MonoMod.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="SegmentedControl">
+      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\SegmentedControl.dll</HintPath>
+      <Private>False</Private>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="SongCore">
       <HintPath>$(BeatSaberDir)\Plugins\SongCore.dll</HintPath>
     </Reference>
     <Reference Include="SongDetailsCache">
       <HintPath>$(BeatSaberDir)\Libs\SongDetailsCache.dll</HintPath>
     </Reference>
-    <Reference Include="System"></Reference>
-    <Reference Include="System.Core"></Reference>
-    <Reference Include="System.Xml.Linq"></Reference>
-    <Reference Include="System.Data.DataSetExtensions"></Reference>
-    <Reference Include="System.Data"></Reference>
-    <Reference Include="System.Xml"></Reference>
+    <Reference Include="System">
+    </Reference>
+    <Reference Include="System.Core">
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+    </Reference>
+    <Reference Include="System.Data">
+    </Reference>
+    <Reference Include="System.Xml">
+    </Reference>
     <Reference Include="Main" Publicize="true">
       <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\Main.dll</HintPath>
     </Reference>
@@ -150,15 +158,19 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Update="System.Drawing"></Reference>
+    <Reference Update="System.Drawing">
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Update="System.IO.Compression.FileSystem"></Reference>
+    <Reference Update="System.IO.Compression.FileSystem">
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Update="System.Numerics"></Reference>
+    <Reference Update="System.Numerics">
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Update="System.Runtime.Serialization"></Reference>
+    <Reference Update="System.Runtime.Serialization">
+    </Reference>
   </ItemGroup>
 </Project>

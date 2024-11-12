@@ -11,8 +11,13 @@ using HarmonyLib;
 namespace BetterSongList {
 	public static class SortMethods {
 		public static readonly ISorter alphabeticalSongname = new ComparableFunctionSorterWithLegend(
-			(songa, songb) => string.Compare(songa.songName, songb.songName, StringComparison.Ordinal),
+			(songa, songb) => string.Compare(songa.songName, songb.songName, StringComparison.OrdinalIgnoreCase),
 			song => song.songName.Length > 0 ? song.songName.Substring(0, 1) : null
+		);
+
+		public static readonly ISorter alphabeticalArtistName = new ComparableFunctionSorterWithLegend(
+			(songa, songb) => string.Compare(songa.songAuthorName, songb.songAuthorName, StringComparison.OrdinalIgnoreCase),
+			song => song.songAuthorName.Length > 0 ? song.songAuthorName.Substring(0, 1) : null
 		);
 
 		public static readonly ISorter bpm = new PrimitiveFunctionSorterWithLegend(
@@ -101,6 +106,7 @@ namespace BetterSongList {
 
 		internal static Dictionary<string, ISorter> methods = new Dictionary<string, ISorter>() {
 			{ "Song Name", alphabeticalSongname },
+			{ "Artist Name", alphabeticalArtistName },
 			{ "Download Date", downloadTime },
 			{ "Ranked Stars", stars },
 			{ "Song Length", songLength },

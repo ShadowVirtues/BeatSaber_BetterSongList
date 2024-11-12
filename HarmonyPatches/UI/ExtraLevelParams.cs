@@ -49,7 +49,7 @@ namespace BetterSongList.HarmonyPatches.UI {
 			ModifyValue(fields[0], "ScoreSaber PP Value", "Difficulty");
 			ModifyValue(fields[1], "Star Rating", "Favorites");
 			ModifyValue(fields[2], "NJS (Note Jump Speed)", "FastNotes");
-			ModifyValue(fields[3], "BeatSaver upload age (Months)", "Clock");
+			ModifyValue(fields[3], "JD (Jump Distance)", "Measure");
 
 			fields[0].richText = true;
 			fields[0].characterSpacing = -3f;
@@ -122,8 +122,6 @@ namespace BetterSongList.HarmonyPatches.UI {
 									fields[1].text = diff.starsBeatleader.ToString("0.0#");
 								}
 							}
-
-							fields[3].text = SortModels.FolderDateSorter.GetMapAgeMonths((int)song.uploadTimeUnix);
 						}
 					}
 					wrapper();
@@ -141,13 +139,10 @@ namespace BetterSongList.HarmonyPatches.UI {
 				if(njs == 0)
 					njs = BeatmapDifficultyMethods.NoteJumpMovementSpeed(beatmapKey.difficulty);
 
-				fields[2].text = njs.ToString("0.0#");
+				fields[2].text = njs.ToString("0.#");
 
-				//var offset = Config.Instance.ShowMapJDInsteadOfOffset ?
-				//	JumpDistanceCalculator.GetJd(____selectedDifficultyBeatmap.level.beatsPerMinute, njs, ____selectedDifficultyBeatmap.noteJumpStartBeatOffset) :
-				//	____selectedDifficultyBeatmap.noteJumpStartBeatOffset;
-
-				//fields[3].text = offset.ToString(Config.Instance.ShowMapJDInsteadOfOffset ? "0.0" : "0.0#");
+				var offset = JumpDistanceCalculator.GetJd(__instance._beatmapLevel.beatsPerMinute, njs, basicData?.noteJumpStartBeatOffset ?? 0);
+				fields[3].text = offset.ToString("0.0");
 			}
 		}
 	}
